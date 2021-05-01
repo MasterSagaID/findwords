@@ -45,20 +45,36 @@ int main()
 char *getWordVertical(int kolom){
     char wordvertical[cols];
 
-    for (int i = 0; i < cols; i++)
-    {
-        
+    for (int i = 0; i < cols; ++i){
+        wordvertical[i] = words[i][kolom];
     }
+
+    char *strvert = wordvertical
+
+    return strvert;
 }
 
 char *reverse(char *){
 
 }
 
-bool searchVertical(char *){
+bool searchVertical(char *str){
+    char* carikata = strstr(getWordVertical(kolom))
 
+    for (int i = 0; i < cols; ++i)
+    {
+        if (str == carikata[i])
+        {
+            return true;
+            break;
+        }
+        else{
+            continue;
+        }
+        return false;
+    }
 }
 
-bool searchHorizontal(char *){
+bool searchHorizontal(char *str){
 
 }
