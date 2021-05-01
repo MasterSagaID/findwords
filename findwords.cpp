@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
-
 using namespace std;
+
 const int cols = 16, rows = 15;
 int hasil;
 
@@ -21,60 +21,64 @@ int hasil;
                                 "pdcrzmsngrdnrpz",
                                 "ohnkzwaterjgtra"};
 
-char *getWordVertical(int);
-char *reverse(char *);
-bool searchVertical(char *);
-bool searchHorizontal(char *);
+char *getWordVertical(int kol);
+// char *reverse(char *str);
+bool searchH(char *str);
+bool searchV(char *str);
 
-
-int main()
-{
-    char word[16];
+int main(){
+    char word[7];
     int n;
-    cin>>n;
-    for (int i=0;i<n;i++){
+    cin >> n;
+    cin.ignore(1,'\n');
+    for(int i = 0; i < n; i++){
         cin.getline(word,16,'\n');
-        if (searchVertical(word) || searchHorizontal(word))
+        if(searchV(word) || searchH(word)){
             cout << "Ada\n";
-        else 
+        }
+        else{
             cout << "Tidak Ada\n";
+        }
     }
     return 0;
 }
 
-char *getWordVertical(int kolom){
-    char wordvertical[cols];
-
-    for (int i = 0; i < cols; ++i){
-        wordvertical[i] = words[i][kolom];
+char *getWordVertical(int col){
+    char vword[rows];
+    for (int i = 0; i < col; ++i){
+        vword[col] = words[i][col];
     }
-
-    char *strvert = wordvertical
-
-    return strvert;
+    char *ptrword = vword;
+    return ptrword;
 }
 
-char *reverse(char *){
+// char *reverse(char *str){}
 
-}
-
-bool searchVertical(char *str){
-    char* carikata = strstr(getWordVertical(kolom))
-
-    for (int i = 0; i < cols; ++i)
-    {
-        if (str == carikata[i])
-        {
+bool searchH(char *str){
+    for (int i = 0; i < rows; i++){
+        char *ptrwordH = words[i];
+        char *ptr = strstr(ptrwordH, str);
+        if(ptr != 0){
             return true;
-            break;
+        }
+        else{
+            continue;
+        }   
+    }
+    return false;
+}
+
+bool searchV(char *str){
+    char *ptrwordV;
+    for(int i = 0; i < rows; i++){
+        ptrwordV = getWordVertical(i);
+        char *ptr = strstr(ptrwordV, str);
+        if(ptr != 0){
+            return true;
         }
         else{
             continue;
         }
-        return false;
     }
-}
-
-bool searchHorizontal(char *str){
-
+    return false;
 }
