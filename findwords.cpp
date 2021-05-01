@@ -2,10 +2,10 @@
 #include <cstring>
 
 using namespace std;
-const int cols = 16, rows = 15;
-int hasil;
 
- char words[rows][cols] = {"tgbwwinterwsesn",
+const int cols = 16, rows = 15;
+
+ char words[rows][cols] = {     "tgbwwinterwsesn",
                                 "aaunttmmhfoodnb",
                                 "jlwcqldzmpmvdmr",
                                 "asagmquwvvbsohi",
@@ -21,10 +21,10 @@ int hasil;
                                 "pdcrzmsngrdnrpz",
                                 "ohnkzwaterjgtra"};
 
-char *getWordVertical(int);
-char *reverse(char *);
-bool searchVertical(char *);
-bool searchHorizontal(char *);
+// char *getWordVertical(int);
+// char *reverse(char *words);
+// bool searchVertical(char *words);
+bool searchHorizontal(char *kata_input);
 
 
 int main()
@@ -32,9 +32,10 @@ int main()
     char word[16];
     int n;
     cin>>n;
+    cin.get();
     for (int i=0;i<n;i++){
         cin.getline(word,16,'\n');
-        if (searchVertical(word) || searchHorizontal(word))
+        if ( searchHorizontal(word))
             cout << "Ada\n";
         else 
             cout << "Tidak Ada\n";
@@ -42,39 +43,26 @@ int main()
     return 0;
 }
 
-char *getWordVertical(int kolom){
-    char wordvertical[cols];
+bool searchHorizontal(char *kata_input){
+     char *ptrWords[rows];
 
-    for (int i = 0; i < cols; ++i){
-        wordvertical[i] = words[i][kolom];
-    }
-
-    char *strvert = wordvertical
-
-    return strvert;
-}
-
-char *reverse(char *){
-
-}
-
-bool searchVertical(char *str){
-    char* carikata = strstr(getWordVertical(kolom))
-
-    for (int i = 0; i < cols; ++i)
-    {
-        if (str == carikata[i])
-        {
+     for(int i = 0 ; i < rows ; i ++){
+        *ptrWords = words[i];
+        if(strstr(*ptrWords,kata_input)){
             return true;
             break;
-        }
-        else{
-            continue;
-        }
-        return false;
+            }
+        else if(i == rows-1){
+            return false;
+            }
     }
+return false;
 }
 
-bool searchHorizontal(char *str){
+char *getWordVertical(){
+    char Transpor [rows][cols];
 
+    
+    retun ptrTrasnpor;
 }
+
