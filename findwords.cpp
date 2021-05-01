@@ -42,7 +42,11 @@ int main()
     return 0;
 }
 
-// char *getWordVertical(int);
-// char *reverse(char *);
-// bool searchVertical(char *);
-// bool searchHorizontal(char *);
+char *getWordVertical(int kolom){
+    char wordvertical[cols];
+
+    for (int i = 0; i < cols; i++)
+    {
+        
+    }
+}
