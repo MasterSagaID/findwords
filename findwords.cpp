@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
-
 using namespace std;
+
 const int cols = 16, rows = 15;
 int hasil;
 
@@ -21,10 +21,10 @@ int hasil;
                                 "pdcrzmsngrdnrpz",
                                 "ohnkzwaterjgtra"};
 
-char *getWordVertical(int);
-char *reverse(char *);
-bool searchVertical(char *);
-bool searchHorizontal(char *);
+//char *getWordVertical(int);
+//char *reverse(char *);
+//bool searchVertical(char *);
+bool searchHorizontal(char *kata);
 
 
 int main()
@@ -32,14 +32,30 @@ int main()
     char word[16];
     int n;
     cin>>n;
+    cin.get();
     for (int i=0;i<n;i++){
         cin.getline(word,16,'\n');
-        if (searchVertical(word) || searchHorizontal(word))
+        if (searchHorizontal(word)) //|| (searchVertical(word))
             cout << "Ada\n";
-        else 
+        else
             cout << "Tidak Ada\n";
     }
     return 0;
+}
+
+bool searchHorizontal(char *kata){
+     char *ptrHorizontal[rows];
+
+     for(int i = 0 ; i < rows ; i++){
+        *ptrHorizontal = words[i];
+        if(strstr(*ptrHorizontal,kata)){
+            return true;
+            break;
+            }
+        else if(i == rows){
+            return false;
+            }
+    }
 }
 
 char *getWordVertical(int kolom){
@@ -74,7 +90,5 @@ bool searchVertical(char *str){
         return false;
     }
 }
-
-bool searchHorizontal(char *str){
 
 }
