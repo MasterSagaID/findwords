@@ -41,3 +41,8 @@ int main()
     }
     return 0;
 }
+
+// char *getWordVertical(int);
+// char *reverse(char *);
+// bool searchVertical(char *);
+// bool searchHorizontal(char *);
