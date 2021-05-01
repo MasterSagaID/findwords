@@ -50,3 +50,15 @@ char *getWordVertical(int kolom){
         
     }
 }
+
+char *reverse(char *){
+
+}
+
+bool searchVertical(char *){
+
+}
+
+bool searchHorizontal(char *){
+
+}
