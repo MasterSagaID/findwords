@@ -1,11 +1,11 @@
 #include <iostream>
 #include <cstring>
-
 using namespace std;
 
 const int cols = 16, rows = 15;
+int hasil;
 
- char words[rows][cols] = {     "tgbwwinterwsesn",
+ char words[rows][cols] = {"tgbwwinterwsesn",
                                 "aaunttmmhfoodnb",
                                 "jlwcqldzmpmvdmr",
                                 "asagmquwvvbsohi",
@@ -21,11 +21,10 @@ const int cols = 16, rows = 15;
                                 "pdcrzmsngrdnrpz",
                                 "ohnkzwaterjgtra"};
 
-char kata_transpor[cols][rows];
-// char *getWordVertical(int);
-char reverse(char *kata_input);
-bool searchVertical(char *kata_input);
-bool searchHorizontal(char *kata_input);
+char *getWordVertical(int kolom);
+//char *reverse(char *);
+bool searchVertical(char *kata);
+bool searchHorizontal(char *kata);
 
 
 int main()
@@ -36,80 +35,49 @@ int main()
     cin.get();
     for (int i=0;i<n;i++){
         cin.getline(word,16,'\n');
-        if ( searchHorizontal(word) || searchHorizontal(word))
+        if (searchHorizontal(word) || (searchVertical(word)){
             cout << "Ada\n";
-        else 
+        }
+        else
             cout << "Tidak Ada\n";
     }
     return 0;
 }
 
-bool searchHorizontal(char *kata_input){
-     char *ptrWords[rows];
+bool searchHorizontal(char *kata){
+     char *ptrHorizontal[rows];
 
-     for(int i = 0 ; i < rows ; i ++){
-        *ptrWords = words[i];
-        if(strstr(*ptrWords,kata_input)){
+     for(int i = 0 ; i < rows ; i++){
+        *ptrHorizontal = words[i];
+        if(strstr(*ptrHorizontal,kata)){
             return true;
             break;
             }
-        else if(i==rows-1){
-                return false;
+        else if(i == rows){
+            return false;
             }
     }
-return false;
 }
 
+char *getWordVertical(int kolom){
+        char kolom[16];
+	for(int i=0;i<rows;i++){
+		kolom[i] = * ( * (words+i)+kolom);
+	}
+}
 
-bool searchVertical(char *kata_input){
-  
-    for(int i = 0 ; i < rows; i ++){
-        for(int j = 0 ; j<cols ; j++ ){
-            kata_transpor [j][i] = words[i][j];
-        }
-    }
-    for(int i = 0 ; i < rows; i ++){
-        for(int j = 0 ; j< rows ; j++ ){
-            kata_transpor [i][j] ;
-        }
-    }
-    
-    for(int i = 0 ; i < rows ; i ++){
-        char *ptrWords[i];
-        if(strstr(*ptrWords,kata_input)){
+bool searchVertical(char *kata){
+    for(int i = 0; i < cols; i++){
+        char *ptrwordVertical = getWordVertical(i);
+        char *pointer = strstr(ptrwordVertical, kata);
+        if(pointer){
             return true;
-                break;
-            }
-            else if(i == rows-1){
-                return false;
-            }
+            break;
+        }
+        else{
+            return false;
+          }
     }
-return false;
-
 }
-// char *getWordVertical(){
-//     char Transpor_kata [cols][rows];
 
-// }
-
-
-// char reverse(char *kata_input){
-//     for(int i = 0  ; i < rows; i++){
-//         for(int j = cols-1 ; j >=0;j--){
-//             words[i][j];
-//         }
-//     }
-//     char *ptrWords[rows];
-//      for(int i = 0 ; i < rows ; i ++){
-//         *ptrWords = words[i];
-//         if(strstr(*ptrWords,kata_input)){
-//             return true;
-//             break;
-//             }
-//         else if(i == rows-1){
-//             return false;
-//             }
-//     }
-// return false;
-
-// }
+//char *reverse(char *)
