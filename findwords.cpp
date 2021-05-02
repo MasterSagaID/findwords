@@ -21,13 +21,13 @@ int hasil;
                                 "pdcrzmsngrdnrpz",
                                 "ohnkzwaterjgtra"};
 
-char *getWordVertical(int kol);
+char *getWordVertical(int col);
 // char *reverse(char *str);
 bool searchH(char *str);
 bool searchV(char *str);
 
 int main(){
-    char word[7];
+    char word[16];
     int n;
     cin >> n;
     cin.ignore(1,'\n');
@@ -40,19 +40,40 @@ int main(){
             cout << "Tidak Ada\n";
         }
     }
+    // for(int j = 0; j < cols; j++){
+    //      char *wordvertical = getWordVertical(j);
+    //      cout << *wordvertical << endl;
+    //  }
+
     return 0;
 }
 
 char *getWordVertical(int col){
-    char vword[rows];
-    for (int i = 0; i < col; ++i){
-        vword[col] = words[i][col];
+    static char vword[rows];
+    for (int i = 0; i < rows; i++){
+        vword[i] = words[i][col];
     }
-    char *ptrword = vword;
-    return ptrword;
+    
+    return vword;
 }
 
-// char *reverse(char *str){}
+// char *reverse(char *str){
+
+// }
+
+bool searchV(char *str){
+    for(int i = 0; i < cols; i++){
+        char *ptrwordV = getWordVertical(i);
+        char *ptr = strstr(ptrwordV, str);
+        if(ptr){
+            return true;
+        }
+        else{
+            continue;
+        }
+    }
+    return false;
+}
 
 bool searchH(char *str){
     for (int i = 0; i < rows; i++){
@@ -64,21 +85,6 @@ bool searchH(char *str){
         else{
             continue;
         }   
-    }
-    return false;
-}
-
-bool searchV(char *str){
-    char *ptrwordV;
-    for(int i = 0; i < rows; i++){
-        ptrwordV = getWordVertical(i);
-        char *ptr = strstr(ptrwordV, str);
-        if(ptr != 0){
-            return true;
-        }
-        else{
-            continue;
-        }
     }
     return false;
 }
