@@ -21,9 +21,9 @@ int hasil;
                                 "pdcrzmsngrdnrpz",
                                 "ohnkzwaterjgtra"};
 
-//char *getWordVertical(int);
+char *getWordVertical(int kolom);
 //char *reverse(char *);
-//bool searchVertical(char *);
+bool searchVertical(char *kata);
 bool searchHorizontal(char *kata);
 
 
@@ -35,8 +35,9 @@ int main()
     cin.get();
     for (int i=0;i<n;i++){
         cin.getline(word,16,'\n');
-        if (searchHorizontal(word)) //|| (searchVertical(word))
+        if (searchHorizontal(word)) || (searchVertical(word)){
             cout << "Ada\n";
+        }
         else
             cout << "Tidak Ada\n";
     }
@@ -59,36 +60,25 @@ bool searchHorizontal(char *kata){
 }
 
 char *getWordVertical(int kolom){
-    char wordvertical[cols];
-
-    for (int i = 0; i < cols; ++i){
-        wordvertical[i] = words[i][kolom];
-    }
-
-    char *strvert = wordvertical
-
-    return strvert;
+        char kolom[16];
+	for(int i=0;i<rows;i++){
+		kolom[i] = * ( * (words+i)+kolom);
+	}
 }
 
-char *reverse(char *){
-
-}
-
-bool searchVertical(char *str){
-    char* carikata = strstr(getWordVertical(kolom))
-
-    for (int i = 0; i < cols; ++i)
-    {
-        if (str == carikata[i])
-        {
+bool searchVertical(char *kata){
+    for(int i = 0; i < cols; i++){
+        char *ptrwordVertical = getWordVertical(i);
+        char *pointer = strstr(ptrwordVertical, kata);
+        if(pointer){
             return true;
             break;
         }
         else{
-            continue;
-        }
-        return false;
+            return false;
+          }
     }
 }
 
-}
+//char *reverse(char *)
+
