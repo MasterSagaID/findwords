@@ -5,7 +5,7 @@ using namespace std;
 const int cols = 16, rows = 15;
 int hasil;
 
- char words[rows][cols] = {"tgbwwinterwsesn",
+ char words[rows][cols] =      {"tgbwwinterwsesn",
                                 "aaunttmmhfoodnb",
                                 "jlwcqldzmpmvdmr",
                                 "asagmquwvvbsohi",
@@ -22,7 +22,8 @@ int hasil;
                                 "ohnkzwaterjgtra"};
 
 char *getWordVertical(int col);
-// char *reverse(char *str);
+char *getWordHorizontal(int col);
+char *reverse(char *str);
 bool searchH(char *str);
 bool searchV(char *str);
 
@@ -40,10 +41,6 @@ int main(){
             cout << "Tidak Ada\n";
         }
     }
-    // for(int j = 0; j < cols; j++){
-    //      char *wordvertical = getWordVertical(j);
-    //      cout << *wordvertical << endl;
-    //  }
 
     return 0;
 }
@@ -53,19 +50,29 @@ char *getWordVertical(int col){
     for (int i = 0; i < rows; i++){
         vword[i] = words[i][col];
     }
-    
     return vword;
 }
 
-// char *reverse(char *str){
+char *reverse(char *str){
+    static char balik[16];
+    int k = 0;
+    for(int i = strlen(str)-1; i >= 0; i--){
+        balik[k] = str[i];
+        k++;
+    }
+    return balik;
+}
 
-// }
 
 bool searchV(char *str){
     for(int i = 0; i < cols; i++){
         char *ptrwordV = getWordVertical(i);
         char *ptr = strstr(ptrwordV, str);
+        char *ptrbalikV = strstr(reverse(ptrwordV), str);
         if(ptr){
+            return true;
+        }
+        else if(ptrbalikV){
             return true;
         }
         else{
@@ -75,11 +82,23 @@ bool searchV(char *str){
     return false;
 }
 
+char *getWordHorizontal(int col){
+    static char hword[rows];
+    for (int i = 0; i < rows; i++){
+        hword[i] = words[col][i];
+    }
+    return hword;
+}
+
 bool searchH(char *str){
     for (int i = 0; i < rows; i++){
-        char *ptrwordH = words[i];
+        char *ptrwordH = getWordHorizontal(i);
         char *ptr = strstr(ptrwordH, str);
+        char *ptrbalikH = strstr(reverse(ptrwordH), str);
         if(ptr != 0){
+            return true;
+        }
+        else if(ptrbalikH != 0){
             return true;
         }
         else{
